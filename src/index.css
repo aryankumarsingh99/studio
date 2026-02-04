@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+/* Modern animated bottom border indicator for navbar */
+.border-underline {
+	position: relative;
+}
+.border-underline::after {
+	content: "";
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%) scaleX(0);
+	bottom: 0;
+	width: 80%;
+	height: 3px;
+	border-radius: 4px;
+	background: linear-gradient(90deg, #FF0000 );
+	opacity: 0;
+	/* Custom cubic-bezier for ease-in left, ease-out right */
+	transition: transform 0.3s cubic-bezier(0.7,0,0.3,1), opacity 0.3s cubic-bezier(0.7,0,0.3,1);
+	z-index: 0;
+}
+.border-underline.active::after,
+.border-underline:hover::after {
+	opacity: 1;
+	transform: translateX(-50%) scaleX(1);
+}
